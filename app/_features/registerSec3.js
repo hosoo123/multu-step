@@ -25,7 +25,6 @@ export const RegisterSec3 = () => {
           {" "}
           <input
             type="file"
-            
             className="flex justify-center items-center z-3 cursor-pointer bg-[#7F7F800D] rounded-lg h-[180px] w-[416px] text-transparent"
           />
           <div className="absolute justify-center items-center flex flex-col gap-2">
