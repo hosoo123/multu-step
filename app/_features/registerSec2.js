@@ -37,7 +37,7 @@ export const RegisterSec2 = () => {
           &lt; Back
         </button>
         <button className="h-11 w-full rounded-lg cursor-pointer bg-[#121316] text-white">
-          Continue 1/3 &gt;
+          Continue 2/3 &gt;
         </button>
       </div>
     </div>
