@@ -1,4 +1,4 @@
-export const RegisterSec2 = () => {
+export const RegisterSec2 = ({handleNext , handleBack}) => {
   return (
     <div className="flex flex-col h-[434px] justify-between">
       {" "}
@@ -33,10 +33,15 @@ export const RegisterSec2 = () => {
         />
       </div>
       <div className="flex flex-row gap-2">
-        <button className="w-[128px] h-11 border border-[#CBD5E1] rounded-lg cursor-pointer bg-white flex justify-center items-center text-black">
+        <button 
+        onClick={handleBack}
+        className="w-[128px] h-11 border border-[#CBD5E1] rounded-lg cursor-pointer bg-white flex justify-center items-center text-black">
           &lt; Back
         </button>
-        <button className="h-11 w-full rounded-lg cursor-pointer bg-[#121316] text-white">
+        <button
+          className="h-11 w-full rounded-lg cursor-pointer bg-[#121316] text-white"
+          onClick={handleNext}
+        >
           Continue 2/3 &gt;
         </button>
       </div>
