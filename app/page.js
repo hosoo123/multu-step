@@ -7,7 +7,6 @@ import { RegisterSec4 } from "./_features/registerSec4";
 import { useState } from "react";
 
 export default function Home() {
-  // const [] = useState
   const [currentStep, setCurrentStep] = useState(1);
   const handleNext = () => {
     if (currentStep < 4) {
@@ -19,6 +18,7 @@ export default function Home() {
       setCurrentStep(currentStep - 1);
     }
   };
+
   return (
     <>
       {currentStep === 4 ? (

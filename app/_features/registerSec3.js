@@ -1,6 +1,10 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export const RegisterSec3 = ({ handleBack, handleNext }) => {
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [uploadImg, setUploadImg] = useState("");
+
   return (
     <div className="flex flex-col h-[434px] justify-between">
       {" "}
@@ -10,13 +14,11 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
         </p>
         <div className="border border-[#CBD5E1] flex rounded-lg items-center">
           <input
-            type="number"
+            value={dateOfBirth}
+            onChange={(e) => setDateOfBirth(e.target.value)}
+            type="date"
             className="w-full rounded-lg h-11 p-3"
             placeholder="--/--/--"
-          />
-          <img
-            src="/icons/calendar.svg"
-            className="absolute right-11 flex items-end"
           />
         </div>
         <p>
@@ -25,6 +27,8 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
         <div className="flex justify-center cursor-pointer items-center">
           {" "}
           <input
+            value={uploadImg}
+            onChange={(e) => setUploadImg(e.target.value)}
             type="file"
             className="flex justify-center items-center z-3 cursor-pointer bg-[#7F7F800D] rounded-lg h-[180px] w-[416px] text-transparent"
           />
