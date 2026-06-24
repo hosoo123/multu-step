@@ -8,20 +8,46 @@ export const RegisterSec1 = ({ handleNext }) => {
   const [lastNameError, setLastNameError] = useState("");
   const [userNameError, setUserNameError] = useState("");
 
-  console.log("asdasd", nameRegex.test("adsada2"));
-
   const checkError = () => {
-    let zow = true;
+    let IsValid = true;
+    // First name error check --------------
     if (firstName.length < 1) {
-      return setFirstNameError(
+      setFirstNameError(
         "First name cannot contain special characters or numbers.",
       );
+      IsValid = false;
     } else if (nameRegex.test(firstName) == false) {
-      setFirstNameError("too bna");
+      setFirstNameError("Тоо эсвэл тусгай тэмдэгт байж болохгүй.");
+      IsValid = false;
     } else {
       setFirstNameError("");
     }
-    return zow;
+    // last name error check ---------------
+    if (lastName.length < 1) {
+      setLastNameError(
+        "Last name cannot contain special characters or numbers.",
+      );
+      IsValid = false;
+    } else if (nameRegex.test(lastName) == false) {
+      setLastNameError("Тоо эсвэл тусгай тэмдэгт байж болохгүй.");
+      IsValid = false;
+    } else {
+      setLastNameError("");
+    }
+    // username error check ----------------
+    if (username.length < 1) {
+      setUserNameError(
+        "This username is already taken. Please choose another one.",
+      );
+      IsValid = false;
+    } else if (nameRegex.test(username) == false) {
+      setUserNameError("Тоо эсвэл тусгай тэмдэгт байж болохгүй.");
+      IsValid = false;
+    } else {
+      setUserNameError("");
+    }
+
+    return IsValid;
   };
 
   const handleClick = () => {
