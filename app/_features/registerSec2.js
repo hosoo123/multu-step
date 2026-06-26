@@ -26,28 +26,40 @@ export const RegisterSec2 = ({ handleNext, handleBack }) => {
     } else {
       setEmailError("");
     }
-// phone number error check
+    // phone number error check
     if (phoneNumber.length < 1) {
       setPhoneNumberError("Please enter a valid phone number.");
       IsValid = false;
     } else if (phoneRegex.test(phoneNumber) == false) {
-      setPhoneNumberError("хамгийн багадаа 8 оронтой байх");
+      setPhoneNumberError("8 оронтой тоо байх");
       IsValid = false;
     } else {
       setPhoneNumberError("");
     }
-// password error check
-    if (passwordError.length < 1) {
-      setPasswordError("Please enter a valid phone number.");
+    // password error check
+    if (password.length < 1) {
+      setPasswordError("Password must include letters and numbers.");
       IsValid = false;
-    } else if (passwordRegex.test(passwordRegex) == false) {
-      setPasswordError("хамгийн багадаа 8 оронтой байх");
+    } else if (passwordRegex.test(password) == false) {
+      setPasswordError(
+        "хамгийн багадаа 8 ба түүнээс урт үсэг болон 1 том үсэг 1 тоо байх",
+      );
       IsValid = false;
     } else {
       setPasswordError("");
     }
+    // confirm password check error
+    if (confirmPassword.length < 1) {
+      setConfirmPasswordError("Confirm password хоосон байна.");
+      IsValid = false;
+    } else if (password !== confirmPassword) {
+      setConfirmPasswordError("Нууц үг таарахгүй байна.");
+      IsValid = false;
+    } else {
+      setConfirmPasswordError("");
+    }
 
-    return;
+    return IsValid;
   };
 
   const handleClick = () => {

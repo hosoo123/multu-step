@@ -5,6 +5,30 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [uploadImg, setUploadImg] = useState("");
 
+  const [dateOfBirthError, setDateOfBirthError] = useState("");
+  const [uploadImgError, setUploadImgError] = useState("");
+
+  const handleUploadImg = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadImg(URL.createObjectURL(file));
+    setUploadImgError("");
+  };
+  const validate = () => {
+    if (!uploadImg) {
+      setUploadImgError("Профайл зурагаа оруулна уу");
+      return false;
+    }
+    setUploadImgError("");
+    return true;
+  };
+  const handleClick = () => {
+    const IsValid = validate();
+    if (IsValid == true) {
+      handleNext();
+    }
+  };
+
   return (
     <div className="flex flex-col h-[434px] justify-between">
       {" "}
@@ -17,33 +41,46 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
             type="date"
-            className="w-full rounded-lg h-11 p-3"
+            className="w-full rounded-lg h-11 p-3 inputContainer dateinput"
             placeholder="--/--/--"
           />
         </div>
         <p>
           Profile image <span className="text-red-600">*</span>
         </p>
-        <div className="flex justify-center cursor-pointer items-center">
+        <div className="flex flex-col object-cover items-center justify-center cursor-pointer ">
           {" "}
           <input
-            value={uploadImg}
-            onChange={(e) => setUploadImg(e.target.value)}
+            onChange={handleUploadImg}
             type="file"
-            className="flex justify-center items-center z-3 cursor-pointer bg-[#7F7F800D] rounded-lg h-[180px] w-[416px] text-transparent"
+            accept="image/*"
+            className="flex justify-center items-center z-3 cursor-pointer bg-[#7F7F800D] rounded-lg h-[180px] w-full text-transparent"
           />
+          {uploadImg && (
+            <img
+              src={uploadImg}
+              className="absolute w-[416px] h-[180px] object-center rounded-lg z-10 UploadImage"
+              alt="preview"
+            />
+          )}
+          {uploadImgError.length > 0 && (
+            <p className="flex text-red-500 items-start w-full font-normal">
+              {uploadImgError}
+            </p>
+          )}
           <div className="absolute justify-center items-center flex flex-col gap-2">
             {" "}
             <div className="bg-[#FFFFFF] rounded-full flex items-center justify-center  w-7 h-7">
               {" "}
               <Image
+                className="flex items-center justify-center"
                 src="/icons/upload.svg"
                 alt="zurag bgashu"
                 width={12}
                 height={12}
               />
             </div>
-            <p className=" ">Add image</p>
+            <p className="flex items-center justify-center ">Add image</p>
           </div>
         </div>
       </div>
@@ -56,7 +93,7 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
         </button>
         <button
           className="h-11 w-full rounded-lg cursor-pointer bg-[#121316] text-white"
-          onClick={handleNext}
+          onClick={handleClick}
         >
           Continue 3/3 &gt;
         </button>
