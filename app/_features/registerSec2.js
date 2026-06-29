@@ -72,7 +72,7 @@ export const RegisterSec2 = ({ handleNext, handleBack }) => {
   return (
     <div className="flex flex-col h-[434px] justify-between">
       {" "}
-      <div className="font-semibold font-sans text-[14px] flex flex-col gap-y-2 text-black">
+      <div className="font-semibold font-sans text-[14px] flex flex-col gap-y-1 text-black">
         <p>
           Email <span className="text-red-600">*</span>
         </p>
