@@ -5,7 +5,6 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [uploadImg, setUploadImg] = useState("");
 
-  const [dateOfBirthError, setDateOfBirthError] = useState("");
   const [uploadImgError, setUploadImgError] = useState("");
 
   const handleUploadImg = (e) => {
@@ -82,6 +81,14 @@ export const RegisterSec3 = ({ handleBack, handleNext }) => {
             </div>
             <p className="flex items-center justify-center ">Add image</p>
           </div>
+          {uploadImg && (
+            <div
+              className="absolute z-30 bg-black w-6 h-6 rounded-xl top-78 right-11 flex items-center justify-center cursor-pointer"
+              onClick={() => setUploadImg("")}
+            >
+              <img src="/icons/close.svg" alt="x-icon" />
+            </div>
+          )}
         </div>
       </div>
       <div className="flex flex-row gap-2">
